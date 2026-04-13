@@ -18,8 +18,9 @@
         "name": "next"
       }
     ],
+    // config code and applicative code seperated to avoid wrong imports
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./src/*"]
     }
   },
   "include": [

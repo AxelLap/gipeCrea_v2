@@ -1,0 +1,117 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mongodb"
+
+}
+
+////////////////////////////////////////////////////
+// ABOUT
+////////////////////////////////////////////////////
+model About {
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  image String?
+  title String
+  p1    String
+  p2    String
+  p3    String
+
+  @@map("about")
+}
+
+////////////////////////////////////////////////////
+// ADMIN
+////////////////////////////////////////////////////
+model Admin {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  userName String
+  password String
+
+  @@map("admin")
+}
+
+////////////////////////////////////////////////////
+// CATEGORIES
+////////////////////////////////////////////////////
+model Category {
+  id       String  @id @default(auto()) @map("_id") @db.ObjectId
+  name     String
+  visible  Boolean
+  position Int
+
+  @@map("categories")
+}
+
+////////////////////////////////////////////////////
+// CONTACT
+////////////////////////////////////////////////////
+model Contact {
+  id      String @id @default(auto()) @map("_id") @db.ObjectId
+  mainUrl String
+  si1Url  String?
+  si2Url  String?
+  si3Url  String?
+  t1      String?
+  t2      String?
+  t3      String?
+  email   String
+
+  @@map("contact")
+}
+
+////////////////////////////////////////////////////
+// FAVORITES
+////////////////////////////////////////////////////
+model Favorite {
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  image String
+  text  String
+
+  @@map("favorites")
+}
+
+////////////////////////////////////////////////////
+// INTRO
+////////////////////////////////////////////////////
+model Intro {
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  url   String
+  title String
+  p1    String
+  p2    String
+  p3    String
+  span  String?
+
+  @@map("intro")
+}
+
+////////////////////////////////////////////////////
+// PAINTINGS
+////////////////////////////////////////////////////
+model Painting {
+  id              String  @id @default(auto()) @map("_id") @db.ObjectId
+  title           String
+  size            String?
+  technic         String?
+  support         String?
+  category        String
+  imageUrl        String
+  isInPreview     Boolean
+  positionInPreview Int?
+
+  @@map("paintings")
+}
+
+////////////////////////////////////////////////////
+// PERFORMANCES
+////////////////////////////////////////////////////
+model Performance {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  client      String
+  description String
+
+  @@map("performances")
+}

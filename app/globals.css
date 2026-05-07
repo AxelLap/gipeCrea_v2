@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import "tw-animate-css";
 
 /* -----------------------------
    DESIGN TOKENS (shadcn style)
@@ -39,7 +38,7 @@
   }
 
   .dark {
-    --background: oklch(0.141 0.005 285.823);
+    --background: oklch(0.32 0 0);
     --foreground: oklch(0.985 0 0);
 
     --card: oklch(0.21 0.006 285.885);
@@ -48,7 +47,7 @@
     --popover: oklch(0.21 0.006 285.885);
     --popover-foreground: oklch(0.985 0 0);
 
-    --primary: oklch(0.444 0.177 26.899);
+    --primary: oklch(0.45 0.16 29);
     --primary-foreground: oklch(0.971 0.013 17.38);
 
     --secondary: oklch(0.274 0.006 286.033);
@@ -68,6 +67,10 @@
   }
 }
 
+.test-tailwind {
+  @apply bg-blue-500 ml-5 gap-10;
+}
+
 /* -----------------------------
    BASE STYLES
 ------------------------------ */
@@ -82,5 +85,9 @@
 
   html {
     @apply font-sans;
+  }
+
+  a:hover {
+    @apply text-primary transition-colors ease-in;
   }
 }

@@ -1,4 +1,4 @@
 export const SiteConfig = {
-  title: "gipé créa",
+  title: "Gipé Créa",
   description: "Art et peinture",
 } as const;

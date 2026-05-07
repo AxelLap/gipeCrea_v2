@@ -1,29 +1,19 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Noto_Sans, Montserrat } from "next/font/google";
+
+import { Header } from "@/components/sections/header/Header";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
-import { cn } from "@/lib/utils";
-
-const montserratHeading = Montserrat({
-  subsets: ["latin"],
-  variable: "--font-heading",
-});
-
-const notoSans = Noto_Sans({ subsets: ["latin"], variable: "--font-sans" });
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { Providers } from "./Providers";
 
 export const metadata: Metadata = {
   title: "Gipé Créa",
   description: "Art et peinture",
 };
+export const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["400", "700"], // adapte selon tes besoins
+  variable: "--font-montserrat", // optionnel mais recommandé
+});
 
 export default function RootLayout({
   children,
@@ -33,17 +23,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn(
-        "h-full",
-        "antialiased",
-        geistSans.variable,
-        geistMono.variable,
-        "font-sans",
-        notoSans.variable,
-        montserratHeading.variable,
-      )}
+      className={`${montserrat.variable} h-full antialiased `}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col w-full font-montserrat">
+        <Header />
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }

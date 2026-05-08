@@ -1,9 +1,9 @@
-type TitleProps = {
+type MainTitleProps = {
   title: string;
   description: string;
 };
 
-export const MainTitle = (props: TitleProps) => {
+export const MainTitle = (props: MainTitleProps) => {
   return (
     <div className="h-full flex flex-col gap-1  mt-3 ">
       <h1 className="font-montserrat text-primary text-4xl relative">
@@ -13,5 +13,15 @@ export const MainTitle = (props: TitleProps) => {
         </span>
       </h1>
     </div>
+  );
+};
+
+type TitleProps = {
+  title: string;
+};
+
+export const Title = (props: TitleProps) => {
+  return (
+    <h2 className="text-secondary h-fit w-fit ml-2 text-2xl">{props.title}</h2>
   );
 };

@@ -36,9 +36,8 @@ export const ConfirmActionDialog = (props: ConfirmActionDialogProps) => {
       </AlertDialogTrigger>
       <AlertDialogContent className="bg-foreground rounded-md text-black">
         <AlertDialogHeader>
-          {props.dialogTitle && (
-            <AlertDialogTitle>{props.dialogTitle}</AlertDialogTitle>
-          )}
+          <AlertDialogTitle>{props.dialogTitle}</AlertDialogTitle>
+
           <AlertDialogDescription>{props.dialogMessage}</AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
@@ -47,7 +46,9 @@ export const ConfirmActionDialog = (props: ConfirmActionDialogProps) => {
           </AlertDialogCancel>
           <AlertDialogAction
             className="font-bold text-white rounded-sm"
-            onClick={props.onConfirm}
+            onClick={async () => {
+              await props.onConfirm();
+            }}
           >
             {props.actionText}
           </AlertDialogAction>

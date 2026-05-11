@@ -1,8 +1,7 @@
 "use client";
-import { signOut } from "@/auth";
 import { ConfirmActionDialog } from "@/components/features/ConfirmActionDoalog";
 import { Card } from "@/components/ui/card";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { LogoTitle } from "./LogoTitle";
 import { NavBar } from "./NavBar";
 

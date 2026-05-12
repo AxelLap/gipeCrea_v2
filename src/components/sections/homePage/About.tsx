@@ -1,6 +1,6 @@
 import { About as AboutType } from "@prisma/client";
 
-import { Text } from "@/components/layout/Text";
+import { Text } from "@/components/layout/Texts";
 import { SplitSection } from "../../layout/splitSection";
 
 type AboutProps = {

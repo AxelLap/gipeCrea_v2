@@ -19,7 +19,7 @@ export const SplitSection = ({
     <section
       className={cn(
         imagePosition === "right" ? "flex-row-reverse gap-4" : "flex-row",
-        "flex justify-center w-[90%] mx-auto my-5",
+        "flex justify-center w-[80%] mx-auto my-8",
       )}
     >
       <div className={cn("flex items-center w-[40%] ")}>
@@ -38,8 +38,10 @@ export const SplitSection = ({
       </div>
       <div
         className={cn(
-          imagePosition === "right" ? "rounded-l-3xl" : "rounded-r-3xl",
-          "w-[60%] flex flex-col gap-2 items-center justify-center bg-accent rounded-r-3xl p-5",
+          imagePosition === "right"
+            ? "rounded-3xl shadow-[-6px_6px_18px_rgba(0,0,0,0.20)]"
+            : "rounded-r-3xl shadow-[6px_6px_18px_rgba(0,0,0,0.20)]",
+          "w-[60%] flex flex-col gap-2 items-center justify-center bg-accent p-5",
         )}
       >
         <Title title={title} />

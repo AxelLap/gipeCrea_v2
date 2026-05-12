@@ -1,4 +1,6 @@
 import { AboutSection } from "@/components/sections/homePage/About";
+import { ContactSection } from "@/components/sections/homePage/Contact";
+import { FavoriteSection } from "@/components/sections/homePage/Favorite";
 import { IntroSection } from "@/components/sections/homePage/Intro";
 import getHomPageData from "./homePageData.query";
 
@@ -9,7 +11,9 @@ export default async function Home() {
       {data ? (
         <>
           {data.intro && <IntroSection introData={data.intro} />}
+          {data.favorite && <FavoriteSection favoriteData={data.favorite} />}
           {data.about && <AboutSection aboutData={data.about} />}
+          {data.contact && <ContactSection contactData={data.contact} />}
         </>
       ) : (
         <p>Failed loading content</p>

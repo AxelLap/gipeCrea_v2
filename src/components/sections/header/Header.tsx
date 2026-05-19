@@ -39,8 +39,7 @@ export const Header = () => {
       {session?.user && (
         <Card
           className={cn(
-            "flex flex-row items-center gap-4 bg-foreground text-black rounded transition-all duration-500",
-            isScrolled ? "p-3 scale-95" : "p-5 h-[90%]",
+            "flex flex-row items-center gap-4 bg-foreground text-black rounded transition-all duration-500 h-[90%] p-4 m-auto",
           )}
         >
           <p className="text-center text-sm">
@@ -49,7 +48,7 @@ export const Header = () => {
 
           <ConfirmActionDialog
             buttonText="Logout"
-            triggerButtonVariant="destructive"
+            triggerButtonVariant="default"
             dialogMessage="Êtes vous sur de vouloir quitter le mode admin ?"
             actionText="Confirmer"
             onConfirm={signOut}

@@ -26,7 +26,7 @@ export default async function RootLayout({
       className={`${montserrat.variable} h-full antialiased `}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col w-full font-montserrat">
+      <body className="min-h-full flex flex-col w-full font-montserrat ">
         <Providers>
           <Header />
           {children}

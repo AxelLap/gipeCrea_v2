@@ -18,7 +18,7 @@ export const LogoTitle = () => {
     };
   }, []);
   return (
-    <div className="flex items-center gap-3 h-full w-1/2">
+    <div className="flex items-center gap-3 h-full w-fit mr-auto">
       <Image
         className="h-fit rounded-full border border-foreground transition-all ease-in-out"
         width={isScrolled ? 50 : 70}

@@ -32,7 +32,12 @@ export const ConfirmActionDialog = (props: ConfirmActionDialogProps) => {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button variant={props.triggerButtonVariant}>{props.buttonText}</Button>
+        <Button
+          className=" text-white font-semibold rounded-md hover:bg-white hover:text-primary"
+          variant={props.triggerButtonVariant}
+        >
+          {props.buttonText}
+        </Button>
       </AlertDialogTrigger>
       <AlertDialogContent className="bg-foreground rounded-md text-black">
         <AlertDialogHeader>
@@ -45,7 +50,7 @@ export const ConfirmActionDialog = (props: ConfirmActionDialogProps) => {
             Cancel
           </AlertDialogCancel>
           <AlertDialogAction
-            className="font-bold text-white rounded-sm"
+            className="text-white font-semibold rounded-md hover:bg-white hover:text-primary"
             onClick={async () => {
               await props.onConfirm();
             }}

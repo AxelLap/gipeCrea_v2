@@ -22,6 +22,6 @@ type TitleProps = {
 
 export const Title = (props: TitleProps) => {
   return (
-    <h2 className="text-secondary h-fit w-fit ml-2 text-2xl">{props.title}</h2>
+    <h2 className="text-secondary h-fit w-fit ml-2 text-3xl">{props.title}</h2>
   );
 };

@@ -19,13 +19,14 @@ export const LogoTitle = () => {
   }, []);
   return (
     <div className="flex items-center gap-3 h-full w-fit mr-auto">
-      <Image
-        className="h-fit rounded-full border border-foreground transition-all ease-in-out"
-        width={isScrolled ? 50 : 70}
-        height={isScrolled ? 50 : 70}
-        alt="Logo"
-        src="/elephantprofile.webp"
-      />
+      <div className="h-[50px] md:h-[70px] w-[50px] md:w-[70px] rounded-full relative overflow-hidden">
+        <Image
+          className="h-fit transition-all ease-in-out"
+          fill
+          alt="Logo"
+          src="/elephantprofile.webp"
+        />
+      </div>
       <MainTitle
         title={SiteConfig.title}
         description={SiteConfig.description}

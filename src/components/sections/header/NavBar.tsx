@@ -4,7 +4,7 @@ import { FBIcon, InstagramIcon } from "../../features/Icons";
 
 export const NavBar = () => {
   return (
-    <nav className="ml-auto mr-7 w-fit">
+    <nav className="ml-auto mr-7 w-fit lg:block hidden">
       <ul className="flex gap-10">
         <li>
           <Link href="/">Accueil</Link>

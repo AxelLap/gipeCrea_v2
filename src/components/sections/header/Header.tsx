@@ -30,8 +30,8 @@ export const Header = () => {
       className={cn(
         "sticky top-0 z-50 w-full flex items-center justify-between transition-all duration-500 ease-in-out backdrop-blur-md",
         isScrolled
-          ? "h-16 px-4 py-1 shadow-lg bg-background/85"
-          : "h-24 px-7 py-2 shadow-xl bg-background",
+          ? "h-16 sm:px-4 px-2 py-1 shadow-lg bg-background/85"
+          : "md:h-24 h-16 sm:px-7 px-2 py-2 shadow-xl bg-background",
       )}
     >
       <LogoTitle />
@@ -39,7 +39,7 @@ export const Header = () => {
       {session?.user && (
         <Card
           className={cn(
-            "flex flex-row items-center gap-4 bg-foreground text-black rounded transition-all duration-500 h-[90%] p-4 m-auto",
+            "hidden flex-row items-center gap-4 bg-foreground text-black rounded transition-all duration-500 h-[90%] p-4 m-auto lg:flex",
           )}
         >
           <p className="text-center text-sm">

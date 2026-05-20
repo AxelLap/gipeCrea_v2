@@ -6,9 +6,9 @@ type MainTitleProps = {
 export const MainTitle = (props: MainTitleProps) => {
   return (
     <div className="h-full flex flex-col gap-1  mt-3 ">
-      <h1 className="font-montserrat text-primary text-4xl relative">
+      <h1 className="font-montserrat text-primary md:text-4xl text-3xl relative">
         {props.title}
-        <span className="absolute -bottom-4 right-7 text-foreground text-sm ">
+        <span className="absolute -bottom-4 right-7 text-foreground text-sm hidden md:block ">
           {props.description}
         </span>
       </h1>

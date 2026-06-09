@@ -8,7 +8,7 @@ import getHomPageData from "./homePageData.query";
 export default async function Home() {
   const data = await getHomPageData();
   return (
-    <main className="flex flex-col flex-1 justify-center  sm:items-start relative">
+    <main className="flex flex-col flex-1 justify-center  lg:items-start relative">
       <TailwindIndicator />
       {data ? (
         <>

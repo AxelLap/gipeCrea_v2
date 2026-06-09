@@ -11,7 +11,7 @@ export const FavoriteSection = (props: FavoriteSectionProps) => {
   return (
     <BasicSection title="Le chouchou du moment">
       <Image
-        className="sm:w-[40%] w-[90%] m-auto h-auto"
+        className="lg:w-[40%] w-[90%] m-auto h-auto"
         src={props.favoriteData.image}
         alt="peinture"
         height={100}

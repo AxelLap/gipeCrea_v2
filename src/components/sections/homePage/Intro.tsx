@@ -10,28 +10,35 @@ type IntroProps = {
 };
 
 export const IntroSection = ({ introData }: IntroProps) => {
-  const { data: session } = useSession();
+  const session = useSession();
+
+  const isAdminLogged = session?.status === "authenticated" ? true : false;
 
   return (
     <SplitSection
       title={introData.title}
       imagePosition="left"
       image={introData.url}
+      isAdminLogged={isAdminLogged}
     >
-      <EditableText session={session ? true : false}>
-        <Text text={introData.p1} />
-      </EditableText>
-      <EditableText session={session ? true : false}>
-        <Text text={introData.p2} />
-      </EditableText>
-      <EditableText session={session ? true : false}>
-        <Text text={introData.p3} />
-      </EditableText>
-
-      {introData.span && (
-        <EditableText session={session ? true : false}>
-          <HighLightText className="text-2xl" text={introData.span} />
-        </EditableText>
+      {isAdminLogged ? (
+        <>
+          {introData.p1 && <EditableText text={introData.p1} />}
+          <EditableText text={introData.p2} />
+          <EditableText text={introData.p3} />
+          {introData.span && (
+            <EditableText highlight={true} text={introData.span} />
+          )}
+        </>
+      ) : (
+        <>
+          <Text text={introData.p1} />
+          <Text text={introData.p2} />
+          <Text text={introData.p3} />
+          {introData.span && (
+            <HighLightText className="text-2xl" text={introData.span} />
+          )}
+        </>
       )}
     </SplitSection>
   );

@@ -4,7 +4,7 @@ export const Text = (props: { text: string; className?: string }) => {
   return (
     <p
       className={cn(
-        "text-center p-2 m-auto",
+        "text-center p-1 m-auto xl:text-md md:text-sm text-xs",
         props.className ? props.className : null,
       )}
     >
@@ -17,7 +17,7 @@ export const HighLightText = (props: { text: string; className?: string }) => {
   return (
     <span
       className={cn(
-        "text-secondary text-xl ml-auto p-4 text-center",
+        "text-secondary xl:text-xl md:text-md text-sm m-auto p-4 text-center",
         props.className ? props.className : null,
       )}
     >

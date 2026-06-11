@@ -1,6 +1,5 @@
 "use client";
 import { cn } from "@/lib/utils";
-import { useSession } from "next-auth/react";
 import Image from "next/image";
 import React from "react";
 import { EditableText } from "../admin/EditableText";
@@ -11,6 +10,7 @@ type SplitSectionProps = {
   image: string;
   imagePosition: "left" | "right";
   children: React.ReactNode;
+  isAdminLogged: boolean;
 };
 
 export const SplitSection = ({
@@ -18,34 +18,29 @@ export const SplitSection = ({
   imagePosition,
   image,
   children,
+  isAdminLogged,
 }: SplitSectionProps) => {
-  const session = useSession();
-
   return (
     <section
       className={cn(
-        imagePosition === "right" ? "lg:flex-row-reverse" : "lg:flex-row",
-        "flex justify-center w-[90%] mx-auto my-8 flex-col items-center gap-4 h-fit",
+        imagePosition === "right" ? "sm:flex-row-reverse" : "sm:flex-row",
+        "flex justify-center xl:w-[90%] w-[95%] mx-auto my-8 flex-col items-center gap-4 h-fit overflow-hidden ",
       )}
     >
-      <Image
-        width={400}
-        height={600}
-        alt="Peinture"
-        src={image}
-        className="rounded-2xl"
-      />
+      <div className="relative xl:h-[500px] h-[400px] xl:w-[400px] w-[350px] shadow-black shadow-xl">
+        <Image fill src={image} alt="Peinture" className="object-cover" />
+      </div>
 
       <div
         className={cn(
-          "lg:w-[60%] w-full rounded-3xl h-[500px] flex flex-col gap-2 items-center justify-center bg-accent p-5",
+          "lg:w-[60%] sm:w-[50%] xl:h-[500px] h-[400px] flex flex-col gap-2 items-center justify-between p-5 overflow-scroll",
         )}
       >
-        <EditableText
-          session={session.status === "authenticated" ? true : false}
-        >
+        {isAdminLogged ? (
+          <EditableText highlight text={title} />
+        ) : (
           <Title title={title} />
-        </EditableText>
+        )}
 
         {children}
       </div>

@@ -1,21 +1,34 @@
 "use client";
 
-import { ConfirmActionDialog } from "@/components/features/ConfirmActionDoalog";
-import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { signOut, useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
+import { useEffect, useRef, useState } from "react";
 import { LogoTitle } from "./LogoTitle";
 import { NavBar } from "./NavBar";
 
 export const Header = () => {
-  const { data: session } = useSession();
+  const session = useSession();
 
   const [isScrolled, setIsScrolled] = useState(false);
+  const scrollLockRef = useRef(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40);
+      if (scrollLockRef.current) return;
+
+      const newValue = window.scrollY > 40;
+
+      setIsScrolled((prev) => {
+        if (prev === newValue) return prev;
+
+        scrollLockRef.current = true;
+
+        setTimeout(() => {
+          scrollLockRef.current = false;
+        }, 2000);
+
+        return newValue;
+      });
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -35,26 +48,6 @@ export const Header = () => {
       )}
     >
       <LogoTitle />
-
-      {session?.user && (
-        <Card
-          className={cn(
-            "m-auto h-[90%] flex-row items-center gap-4 rounded bg-foreground p-4 text-black transition-all duration-500 lg:flex",
-          )}
-        >
-          <p className="text-center text-sm">
-            Session Admin : {session.user.email}
-          </p>
-
-          <ConfirmActionDialog
-            buttonText="Logout"
-            triggerButtonVariant="default"
-            dialogMessage="Êtes vous sur de vouloir quitter le mode admin ?"
-            actionText="Confirmer"
-            onConfirm={signOut}
-          />
-        </Card>
-      )}
 
       <div
         className={cn(

@@ -23,7 +23,7 @@ export const IntroSection = ({ introData }: IntroProps) => {
     >
       {isAdminLogged ? (
         <>
-          {introData.p1 && <EditableText text={introData.p1} />}
+          {<EditableText text={introData.p1} />}
           <EditableText text={introData.p2} />
           <EditableText text={introData.p3} />
           {introData.span && (

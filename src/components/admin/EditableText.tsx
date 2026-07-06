@@ -5,7 +5,6 @@ import { Button } from "../ui/button";
 import { Textarea } from "../ui/textarea";
 
 type EditableTextProps = {
-  section: "intro" | "contact" | "favorite" | "about";
   text: string;
   highlight?: boolean;
 };

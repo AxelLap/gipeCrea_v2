@@ -1,38 +1,22 @@
 import { SiteConfig } from "@/lib/site-config";
 import Image from "next/image";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { cn } from "../../../lib/utils";
 import { MainTitle } from "../../layout/Titles";
 
 export const LogoTitle = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const scrollLockRef = useRef(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (scrollLockRef.current) return;
-
-      const newValue = window.scrollY > 40;
-
-      setIsScrolled((prev) => {
-        if (prev === newValue) return prev;
-
-        scrollLockRef.current = true;
-
-        setTimeout(() => {
-          scrollLockRef.current = false;
-        }, 2000);
-
-        return newValue;
-      });
+      setIsScrolled(window.scrollY > 0);
     };
+
+    handleScroll(); // initialise l'état
 
     window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (

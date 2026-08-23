@@ -1,5 +1,10 @@
 import { prisma } from "@/lib/prisma";
 import bcrypt from "bcryptjs";
+import {
+  GetServerSidePropsContext,
+  NextApiRequest,
+  NextApiResponse,
+} from "next";
 import NextAuth, { type DefaultSession } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 

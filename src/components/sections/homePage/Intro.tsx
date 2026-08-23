@@ -1,9 +1,12 @@
 "use client";
+import { CreaForm, useZodForm } from "@/components/admin/CreaForm";
 import { EditableText } from "@/components/admin/EditableText";
 import { SplitSection } from "@/components/layout/splitSection";
 import { HighLightText, Text } from "@/components/layout/Texts";
+import { IntroSchema, IntroSchemaPut } from "@/lib/models/homePage.model";
 import { Intro as IntroType } from "@prisma/client";
 import { useSession } from "next-auth/react";
+import { introActionUpdate } from "../../../../app/homePageActions/introAction";
 
 type IntroProps = {
   introData: IntroType;
@@ -13,7 +16,10 @@ export const IntroSection = ({ introData }: IntroProps) => {
   const session = useSession();
 
   const isAdminLogged = session?.status === "authenticated" ? true : false;
-
+  const form = useZodForm({
+    schema: IntroSchema,
+    defaultValues: introData,
+  });
   return (
     <SplitSection
       title={introData.title}
@@ -22,14 +28,14 @@ export const IntroSection = ({ introData }: IntroProps) => {
       isAdminLogged={isAdminLogged}
     >
       {isAdminLogged ? (
-        <>
-          {<EditableText text={introData.p1} />}
+        <CreaForm<IntroSchemaPut> form={form}>
+          <EditableText text={introData.p1} />
           <EditableText text={introData.p2} />
           <EditableText text={introData.p3} />
           {introData.span && (
             <EditableText highlight={true} text={introData.span} />
           )}
-        </>
+        </CreaForm>
       ) : (
         <>
           <Text text={introData.p1} />

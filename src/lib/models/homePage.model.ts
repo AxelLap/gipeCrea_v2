@@ -7,7 +7,7 @@ export const IntroSchema = z.object({
   p1: z.string(),
   p2: z.string(),
   p3: z.string(),
-  span: z.string(),
+  span: z.string().nullable(),
 });
 export type IntroSchemaGet = z.infer<typeof IntroSchema>;
 export type IntroSchemaPut = z.infer<typeof IntroSchema>;

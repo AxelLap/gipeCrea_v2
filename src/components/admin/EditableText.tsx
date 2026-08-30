@@ -1,19 +1,24 @@
 import { Edit2Icon } from "lucide-react";
-import { useState } from "react";
 import { HighLightText, Text } from "../layout/Texts";
 import { Button } from "../ui/button";
 import { Textarea } from "../ui/textarea";
+import { useState } from "react";
 
 type EditableTextProps = {
-  text: string;
+  name: string;
+  value?: string;
+  ariaInvalid: boolean;
+  autoComplete: "on" | "off";
   highlight?: boolean;
+  onChange: (value: string) => void;
 };
 
 export const EditableText = ({
-  text: initialText,
+  name,
+  value,
   highlight,
+  onChange,
 }: EditableTextProps) => {
-  const [text, setText] = useState(initialText);
   const [isEditing, setIsEditing] = useState(false);
 
   return (
@@ -23,16 +28,17 @@ export const EditableText = ({
     >
       {isEditing ? (
         <Textarea
+          name={name}
           autoFocus
-          value={text}
-          onChange={(e) => setText(e.target.value)}
+          value={value ?? ""}
+          onChange={(e) => onChange(e.target.value)}
           onBlur={() => setIsEditing(false)}
           className="text-center p-1 m-auto xl:text-md md:text-sm text-xs w-[100%] h-[100%] border-none"
         />
-      ) : highlight ? (
-        <HighLightText text={text} />
+      ) : highlight && value ? (
+        <HighLightText text={value} />
       ) : (
-        <Text text={text} />
+        value && <Text text={value} />
       )}
 
       {!isEditing && (
